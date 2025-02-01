@@ -108,7 +108,7 @@ class App {
     canvas.addCanvasMultiTool(KitBuildCanvasTool.UNLOCK);
 
     this.resizeTool = new ResizeTool(canvas);
-    canvas.canvasTool.addTool('TOOL_RESIZE', this.resizeTool);
+    canvas.toolCanvas.addTool('TOOL_RESIZE', this.resizeTool);
     KitBuildCanvasKonva.instance.addListener(this.resizeTool);
 
     this.canvas = canvas;
@@ -808,7 +808,7 @@ class App {
   //       this.canvas.toolbar.tools
   //         .get(KitBuildToolbar.NODE_CREATE)
   //         .setActiveDirection(conceptMap.map.direction);
-  //       this.canvas.canvasTool.clearCanvas().clearIndicatorCanvas();
+  //       this.canvas.toolCanvas.clearCanvas().clearIndicatorCanvas();
   //       KitBuildUI.showBackgroundImage(this.canvas);
   //       UI.success("Concept map loaded.").show();
   //       L.log("open-concept-map", conceptMap.map, null, {
@@ -846,7 +846,7 @@ class App {
     this.canvas.toolbar.tools
       .get(KitBuildToolbar.NODE_CREATE)
       .setActiveDirection(conceptMap.map.direction);
-    this.canvas.canvasTool.clearCanvas().clearIndicatorCanvas();
+    this.canvas.toolCanvas.clearCanvas().clearIndicatorCanvas();
     KitBuildUI.showBackgroundImage(this.canvas);
   }
 
@@ -875,16 +875,16 @@ class App {
     $('.app-navbar button.bt-new').prop('disabled', false);
     this.canvas.toolbar.tools.get(KitBuildToolbar.UNDO_REDO).disable();
     this.canvas.toolbar.tools.get(KitBuildToolbar.NODE_CREATE).disable();
-    this.canvas.canvasTool.tools.get("create-concept").disable();
-    this.canvas.canvasTool.tools.get("create-link").disable();
+    this.canvas.toolCanvas.tools.get("create-concept").disable();
+    this.canvas.toolCanvas.tools.get("create-link").disable();
   }
   
   enable() {
     $('.app-navbar button').prop('disabled', false);
     this.canvas.toolbar.tools.get(KitBuildToolbar.UNDO_REDO).enable();
     this.canvas.toolbar.tools.get(KitBuildToolbar.NODE_CREATE).enable();
-    this.canvas.canvasTool.tools.get("create-concept").enable();
-    this.canvas.canvasTool.tools.get("create-link").enable();
+    this.canvas.toolCanvas.tools.get("create-concept").enable();
+    this.canvas.toolCanvas.tools.get("create-link").enable();
   }
 
   handleRefresh() {
