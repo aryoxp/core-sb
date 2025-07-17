@@ -15,6 +15,7 @@
       <button class="bt-save btn btn-secondary"><i class="bi bi-download"></i> Save</button>
       <button class="bt-load btn btn-secondary"><i class="bi bi-upload"></i> Load</button>
     </div>
+    <!-- <button class="bt-load-group-map btn btn-sm btn-primary ms-2"><i class="bi bi-upload"></i> Load Group Map</button> -->
     <div class="btn-group btn-group-sm ms-2">
       <button class="bt-submit btn btn-danger"><i class="bi bi-send"></i> Submit <span class="count"></span></button>
     </div>
@@ -29,7 +30,7 @@
     <button class="bt-compose-kit btn btn-warning btn-sm" disabled><i class="bi bi-grid-1x2"></i><i class="bi bi-arrow-right-short"></i><i class="bi bi-layout-wtf"></i> Compose Kit</button> -->
   </div>
 
-  <div class="d-flex flex-fill align-items-stretch">
+  <div class="d-flex flex-fill align-items-stretch flex-column">
     <?php // $this->pluginView('kitbuild-ui', ["id" => "goalmap-canvas"], 0);
     ?>
     <!-- container of this layout template must have a display: flex style -->
@@ -42,6 +43,10 @@
       </div>
       <div id="goalmap-canvas" class="kb-cy flex-fill"></div>
     </div>
+    <div class="d-flex">
+      <div class="status-panel flex-fill m-2 mt-0 d-flex" style="overflow-x: auto"></div>
+      <div class="status-control text-end m-2 mt-0"><button class="btn btn-primary btn-sm opacity-0">&nbsp;</button></div>
+    </div>    
   </div>
 
 
@@ -65,9 +70,9 @@
     <div class="card-body">
       <textarea class="form-control encoded-data" rows="5"></textarea>
       <div class="my-2">
-        <div class="file-drop-area">
-          <span class="fake-btn btn btn-primary me-3">Choose file</span>
-          <span class="file-msg">or drop file here</span>
+        <div class="file-drop-area d-flex">
+          <span class="fake-btn btn btn-primary me-3 text-nowrap">Choose file</span>
+          <span class="file-msg me-5 d-flex align-items-center">or drop file here</span>
           <input class="file-input" type="file" multiple="">
           <div class="item-delete me-4"></div>
         </div>
@@ -75,10 +80,24 @@
     </div>
     <div class="card-footer d-flex text-end">
       <button class="btn btn-sm btn-secondary bt-cancel px-3">Cancel</button>
+      <button class="btn btn-sm btn-success bt-paste ms-1"><i class="bi bi-clipboard"></i> Paste</button>
       <span class="flex-fill">&nbsp;</span>
-      <button class="btn btn-sm btn-success bt-paste"><i class="bi bi-clipboard"></i> Paste</button>
+      <button class="btn btn-sm btn-primary bt-selective-import ms-1"><i class="bi bi-clipboard-check"></i> Selective Import</button>
       <button class="btn btn-sm btn-primary ms-1 bt-decode px-3"><i class="bi bi-clipboard"></i> Decode</button>
     </div>
+  </div>
+
+  <div id="concept-map-selective-import-dialog" class="card d-none">
+    <h6 class="card-header handle"><i class="bi bi-arrow-right-short"></i><i class="bi bi-code-square"></i> Selective Import</h6>
+    <div class="card-body p-0 position-relative">
+      <div class="prop-list overflow-y-auto p-2 px-3 position-absolute w-100" style="height:100%"></div>
+    </div>
+    <div class="card-footer d-flex text-end justify-content-end">
+      <button class="btn btn-sm btn-secondary bt-toggle-selected px-3">Toggle Selections</button>
+      <span class="flex-fill">&nbsp;</span>
+      <button class="btn btn-sm btn-secondary bt-cancel px-3">Cancel</button>
+      <button class="btn btn-sm btn-primary ms-1 bt-import-selected px-3"><i class="bi bi-download"></i> Import</button>
+    </div>    
   </div>
   
   <div id="concept-map-save-as-dialog" class="card d-none">
